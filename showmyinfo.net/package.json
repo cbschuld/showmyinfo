@@ -1,0 +1,19 @@
+{
+  "name": "www",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "sync": "aws s3 sync --acl public-read ./dist/ s3://showmyinfo.net/ --profile=showmyinfo",
+    "invalidate": "aws cloudfront create-invalidation --distribution-id E1BG3IYF03TQB6 --paths \"/*\" --profile=showmyinfo",
+    "deploy": "npm run build && npm run sync && npm run invalidate"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.4",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.9",
+    "typescript": "^4.3.2",
+    "vite": "^2.5.2"
+  }
+}
