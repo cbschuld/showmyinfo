@@ -16,7 +16,8 @@ showmyinfo/
 │   ├── web/      # Frontend (Cloudflare Pages)
 │   ├── worker/   # Backend API (Cloudflare Workers)
 │   └── shared/   # Shared TypeScript types
-└── .github/workflows/  # CI/CD
+├── turbo.json    # Turborepo configuration
+└── package.json  # Workspace root
 ```
 
 ## Data Collected
@@ -53,19 +54,14 @@ pnpm --filter @showmyinfo/worker dev  # Worker at http://localhost:8787
 
 ## Deployment
 
-Automatic deployment via GitHub Actions on push to `main`:
-- Worker changes → Cloudflare Workers
-- Web changes → Cloudflare Pages
-
-### Manual Deployment
-
 ```bash
-# Deploy worker
-pnpm --filter @showmyinfo/worker deploy
+# Deploy everything (builds first via Turborepo)
+pnpm deploy
 
-# Build and deploy web (via wrangler)
-pnpm --filter @showmyinfo/web build
-wrangler pages deploy packages/web/dist --project-name=showmyinfo
+# Or deploy individually
+pnpm --filter @showmyinfo/worker deploy   # Deploy worker to Cloudflare Workers
+pnpm --filter @showmyinfo/web build       # Build web
+pnpm --filter @showmyinfo/web deploy      # Deploy web to Cloudflare Pages
 ```
 
 ## Setup Cloudflare
@@ -73,10 +69,7 @@ wrangler pages deploy packages/web/dist --project-name=showmyinfo
 1. Create Cloudflare account at https://dash.cloudflare.com/sign-up
 2. Add `showmyinfo.net` domain to Cloudflare
 3. Update nameservers at registrar
-4. Create API token with Workers and Pages permissions
-5. Add GitHub repository secrets:
-   - `CLOUDFLARE_API_TOKEN`
-   - `CLOUDFLARE_ACCOUNT_ID`
+4. Login with wrangler: `npx wrangler login`
 
 ## Cost
 

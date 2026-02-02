@@ -6,9 +6,17 @@ export const serverInfo = signal<ServerInfo | null>(null);
 export const clientInfo = signal<ClientInfo | null>(null);
 export const isLoading = signal(true);
 export const error = signal<string | null>(null);
-export const darkMode = signal(
-  typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
-);
+// Initialize dark mode from localStorage, falling back to system preference
+function getInitialDarkMode(): boolean {
+  if (typeof window === 'undefined') return false;
+  const stored = localStorage.getItem('darkMode');
+  if (stored !== null) {
+    return stored === 'true';
+  }
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
+export const darkMode = signal(getInitialDarkMode());
 
 // Derived state
 export const isReady = computed(() => serverInfo.value !== null && clientInfo.value !== null);
@@ -32,7 +40,8 @@ export function setError(err: string | null) {
 
 export function toggleDarkMode() {
   darkMode.value = !darkMode.value;
-  if (typeof document !== 'undefined') {
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('darkMode', String(darkMode.value));
     document.documentElement.classList.toggle('dark', darkMode.value);
   }
 }
