@@ -1,20 +1,18 @@
 {
-  "name": "showmyinfo.net",
-  "version": "1.0.0",
-  "description": "monorepo for the showmyinfo.net site",
-  "main": "index.js",
+  "name": "showmyinfo",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Show your IP, browser, and device information - powered by Cloudflare",
+  "packageManager": "pnpm@9.15.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "deploy": "turbo deploy"
   },
-  "author": "",
-  "license": "UNLICENSED",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.31.0",
-    "@typescript-eslint/parser": "^4.31.0",
-    "eslint": "^7.32.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0"
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
   }
 }

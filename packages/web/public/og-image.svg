@@ -1,0 +1,9 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#f97316"/>
+  <rect x="50" y="50" width="1100" height="530" rx="20" fill="white"/>
+  <circle cx="150" cy="315" r="60" fill="#f97316"/>
+  <text x="150" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="70" font-weight="bold" fill="white">i</text>
+  <text x="250" y="290" font-family="system-ui, sans-serif" font-size="72" font-weight="bold" fill="#1f2937">ShowMyInfo.net</text>
+  <text x="250" y="370" font-family="system-ui, sans-serif" font-size="36" fill="#6b7280">Your IP, Browser &amp; Device Information</text>
+  <text x="250" y="450" font-family="system-ui, sans-serif" font-size="28" fill="#9ca3af">Free, fast, and privacy-focused</text>
+</svg>
