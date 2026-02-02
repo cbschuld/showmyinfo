@@ -32,7 +32,7 @@ export function Footer() {
           </div>
         </div>
         <p class="text-center text-gray-400 dark:text-gray-500 text-xs mt-4">
-          &copy; {new Date().getFullYear()} Chris Schuld. All rights reserved.
+          &copy; {new Date().getFullYear()} <a href="https://chrisschuld.com/" target="_blank" rel="noopener noreferrer" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">Chris Schuld</a>. All rights reserved.
         </p>
       </div>
     </footer>
